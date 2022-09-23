@@ -25,4 +25,4 @@ from sklearn.preprocessing import normalize
 # seasonality - build calendar
 # labor - ??? statista offers a data set adjacent thing
 # maitenance statistics - ???
-# historical fuel - HERE API (can do corridor), Collect API (gas by city state)
+# historical fuel - Collect API (gas by city state can get lane with stops etc)
