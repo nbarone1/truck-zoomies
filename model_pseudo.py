@@ -2,6 +2,7 @@
 
 # import statements, assuming we go with tensorflow
 import requests
+import http.client
 import tensorflow as tf
 import time as t
 import numpy as np
