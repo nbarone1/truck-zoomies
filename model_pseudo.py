@@ -23,3 +23,4 @@ from sklearn.preprocessing import normalize
 # temp, precipitation - visual crossing weather
 # seasonality - build calendar
 # maitenance statistics - ???
+# historical fuel - HERE API, Collect API
