@@ -1,5 +1,8 @@
 # MODEL OUTLINE/PSUEDO CODE
 
+# idea for model - time series with LSTM for certain parameters
+# LSTM for price, labor, fuel
+
 # import statements, assuming we go with tensorflow
 import requests
 import http.client
@@ -15,14 +18,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import normalize
 
 
-# idea for model - time series with LSTM for certain parameters
-# LSTM for price, labor, fuel
-
 # Params right now: historical cost, historical fuel, temp, precipitation, market, seasonality (holiday, harvest season), DAT frequency, maitenance proxy, load type 
 # Cost, Market, (DAT), load type - ALX/ALC data
 # DAT frequency, line cost, fuel cost - DAT database
 # temp, precipitation - visual crossing weather
 # seasonality - build calendar
 # labor - ??? statista offers a data set adjacent thing
-# maitenance statistics - ???
+# maitenance statistics - ??? take 16% of variable roughly
 # historical fuel - Collect API (get data by state and city) & EIA API
