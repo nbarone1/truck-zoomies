@@ -3,6 +3,10 @@
 # import statements, assuming we go with tensorflow
 import requests
 import tensorflow as tf
+import time as t
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
 
 
 # idea for model - time series with LSTM for certain parameters
