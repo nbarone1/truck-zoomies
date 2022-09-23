@@ -23,5 +23,6 @@ from sklearn.preprocessing import normalize
 # DAT - DAT database
 # temp, precipitation - visual crossing weather
 # seasonality - build calendar
+# labor - ??? statista offers a data set adjacent thing
 # maitenance statistics - ???
-# historical fuel - HERE API, Collect API
+# historical fuel - HERE API (can do corridor), Collect API (gas by city state)
