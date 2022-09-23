@@ -25,4 +25,4 @@ from sklearn.preprocessing import normalize
 # seasonality - build calendar
 # labor - ??? statista offers a data set adjacent thing
 # maitenance statistics - ???
-# historical fuel - Collect API (get data by state and city) -> can push this into a table for pulling data to be looked up dictionary style
+# historical fuel - Collect API (get data by state and city) & EIA API
