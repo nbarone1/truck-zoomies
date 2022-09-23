@@ -6,7 +6,12 @@ import tensorflow as tf
 import time as t
 import numpy as np
 import matplotlib.pyplot as plt
+import sklearn.model_selection as skl
+import pandas as pd
+import collections
+import math
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import normalize
 
 
 # idea for model - time series with LSTM for certain parameters
