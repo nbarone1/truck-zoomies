@@ -20,9 +20,9 @@ from sklearn.preprocessing import normalize
 
 # Params right now: historical cost, historical fuel, temp, precipitation, market, seasonality (holiday, harvest season), DAT frequency, maitenance proxy, load type 
 # Cost, Market, (DAT), load type - ALX/ALC data
-# DAT - DAT database
+# DAT frequency, line cost, fuel cost - DAT database
 # temp, precipitation - visual crossing weather
 # seasonality - build calendar
 # labor - ??? statista offers a data set adjacent thing
 # maitenance statistics - ???
-# historical fuel - Collect API (gas by city state can get lane with stops etc)
+# historical fuel - Collect API (get data by state and city) -> can push this into a table for pulling data to be looked up dictionary style
