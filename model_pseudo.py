@@ -22,6 +22,6 @@ from sklearn.preprocessing import normalize
 # DAT frequency, line cost, fuel cost - DAT database
 # temp, precipitation - visual crossing weather
 # seasonality - build calendar
-# labor - ??? statista offers a data set adjacent thing
-# maitenance statistics - ??? take 16% of variable roughly
+# labor - ??? statista offers a data set adjacent thing: Is this something I can get from non data set?
+# maitenance statistics - ??? take 16% of variable roughly: non data set information?
 # historical fuel - Collect API (get data by state and city) & EIA API
