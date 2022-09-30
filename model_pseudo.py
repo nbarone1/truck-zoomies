@@ -8,6 +8,8 @@ import datetime
 import requests
 import http.client
 import tensorflow as tf
+from tensorflow import keras
+from keras import layers
 import time as t
 import numpy as np
 import matplotlib.pyplot as plt
