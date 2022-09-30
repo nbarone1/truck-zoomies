@@ -18,6 +18,8 @@ import math
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import normalize
 
+# if possible get access to use tf/keras
+
 # Params right now: historical cost, historical fuel, temp, precipitation, market, seasonality (holiday, harvest season), DAT frequency, maitenance proxy, load type 
 # Cost, Market, (DAT), load type - ALX/ALC data
 # DAT frequency, line cost, fuel cost - DAT database
