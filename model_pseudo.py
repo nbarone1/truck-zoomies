@@ -4,6 +4,7 @@
 # LSTM for price, labor, fuel
 
 # import statements, assuming we go with tensorflow
+import datetime
 import requests
 import http.client
 import tensorflow as tf
@@ -25,3 +26,11 @@ from sklearn.preprocessing import normalize
 # labor - ??? statista offers a data set adjacent thing: Is this something I can get from non data set?
 # maitenance statistics - ??? take 16% of variable roughly: non data set information?
 # historical fuel - Collect API (get data by state and city) & EIA API
+# Does shipper matter?
+# Do we want this lande by lane?
+#       Otherwise we need fuel/miles for load length
+#       Build model lane by lane? can save parameters in a JSON file for future use/development/fine tuned
+
+# onehot encode load, would have to onehot lanes (would likely have to do O_STATE, D_STATE)
+# holidays are days after and days before
+# numericals - miles, cost, dat, dat frequency, line cost, historical fuel, temp, precipitation, labor, maitenance
