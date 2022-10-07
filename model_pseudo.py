@@ -4,6 +4,7 @@
 # LSTM for price, labor, fuel
 
 # import statements, assuming we go with tensorflow
+# if possible get access to use tf/keras
 import datetime
 import requests
 import http.client
@@ -20,7 +21,8 @@ import math
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import normalize
 
-# if possible get access to use tf/keras
+# importing methods from support files
+from data_prep import holiday_dataframe
 
 # Params right now: historical cost, historical fuel, temp, precipitation, market, seasonality (holiday, harvest season), DAT frequency, maitenance proxy, load type 
 # Cost, Market, (DAT), load type - ALX/ALC data
@@ -44,3 +46,5 @@ from sklearn.preprocessing import normalize
 
 # Data prep - ensure we have either names or numbers (do we need to turn O_STATE,D_STATE into a number)
 # Data prep done in seperate file, idea is to keep this one clean, act as a main
+
+data = holiday_dataframe('2022-01-01','2022-10-07')
