@@ -48,3 +48,5 @@ from data_prep import holiday_dataframe
 # Data prep done in seperate file, idea is to keep this one clean, act as a main
 
 data = holiday_dataframe('2022-01-01','2022-10-07')
+
+data.to_csv('file_name.csv',index=False)
