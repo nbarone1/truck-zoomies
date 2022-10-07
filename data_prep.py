@@ -49,19 +49,19 @@ def load_onehot(lt):
     lthe['F']=NaN
     lthe['L']=NaN
     for i in range(0,len(lt)):
-        if lt[i] == "DRY VAN":
+        if lt['Load Type'][i] == "DRY VAN":
             lthe['R'][i]=0
             lthe['F'][i]=0
             lthe['L'][i]=0
-        if lt[i] == "REFRIGERATED":
+        if lt['Load Type'][i] == "REFRIGERATED":
             lthe['R'][i]=1
             lthe['F'][i]=0
             lthe['L'][i]=0
-        if lt[i] == "DRY LTL":
+        if lt['Load Type'][i] == "DRY LTL":
             lthe['R'][i]=0
             lthe['F'][i]=0
             lthe['L'][i]=1
-        if lt[i] == "FLATBED":
+        if lt['Load Type'][i] == "FLATBED":
             lthe['R'][i]=0
             lthe['F'][i]=1
             lthe['L'][i]=0

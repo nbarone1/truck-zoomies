@@ -5,11 +5,11 @@
 
 # import statements, assuming we go with tensorflow
 # if possible get access to use tf/keras
-# import pandas as pd
+import pandas as pd
 # import numpy
 
 # importing methods from support files
-from data_prep import holiday_dataframe
+import data_prep as dprep
 
 # Params right now: historical cost, historical fuel, temp, precipitation, market, seasonality (holiday, harvest season), DAT frequency, maitenance proxy, load type (hot encoded)
 # Cost, Market, (DAT), load type - ALX/ALC data
@@ -34,6 +34,16 @@ from data_prep import holiday_dataframe
 # Data prep - ensure we have either names or numbers (do we need to turn O_STATE,D_STATE into a number)
 # Data prep done in seperate file, idea is to keep this one clean, act as a main
 
-data = holiday_dataframe('2022-01-01','2022-10-07')
+data = dprep.holiday_dataframe('2022-01-01','2022-10-07')
 
 data.to_csv('file_name.csv',index=False)
+
+loads = ['DRY VAN','REFRIGERATED','DRY LTL','FLATBED']
+loads = pd.DataFrame(loads, columns=['Load Type'])
+
+load_specs = dprep.load_onehot(loads)
+loads['R'] = load_specs['R']
+loads['F'] = load_specs['F']
+loads['L'] = load_specs['L']
+
+loads.to_csv('file_name2.csv',index=False)
