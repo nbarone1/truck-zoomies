@@ -5,26 +5,13 @@
 
 # import statements, assuming we go with tensorflow
 # if possible get access to use tf/keras
-import datetime
-import requests
-import http.client
-import tensorflow as tf
-from tensorflow import keras
-from keras import layers
-import time as t
-import numpy as np
-import matplotlib.pyplot as plt
-import sklearn.model_selection as skl
-import pandas as pd
-import collections
-import math
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import normalize
+# import pandas as pd
+# import numpy
 
 # importing methods from support files
 from data_prep import holiday_dataframe
 
-# Params right now: historical cost, historical fuel, temp, precipitation, market, seasonality (holiday, harvest season), DAT frequency, maitenance proxy, load type 
+# Params right now: historical cost, historical fuel, temp, precipitation, market, seasonality (holiday, harvest season), DAT frequency, maitenance proxy, load type (hot encoded)
 # Cost, Market, (DAT), load type - ALX/ALC data
 # DAT frequency, line cost, fuel cost - DAT database
 # temp, precipitation - visual crossing weather

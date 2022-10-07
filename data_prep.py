@@ -4,6 +4,8 @@
 import pandas as pd
 from pandas.tseries.holiday import USFederalHolidayCalendar as calendar
 
+from numpy import NaN
+
 def holiday_dataframe(s,f):
     # s and f need to be dates writen as strings in form yyyy-mm-dd
     dr = pd.date_range(start=s,end=f)
@@ -35,4 +37,36 @@ def holiday_dataframe(s,f):
     fdf['Days After'] = df['Days After']
 
     return fdf
-    
+
+# weather information (temp and precipitation)
+def weather():
+    return
+
+def load_onehot(lt):
+    # load types 0,0,0 is dry; 1,0,0 is refer and 0,1,0 is flat bed; 0,0,1 is Dry LTL
+    lthe = lt
+    lthe['R']=NaN
+    lthe['F']=NaN
+    lthe['L']=NaN
+    for i in range(0,len(lt)):
+        if lt[i] == "DRY VAN":
+            lthe['R'][i]=0
+            lthe['F'][i]=0
+            lthe['L'][i]=0
+        if lt[i] == "REFRIGERATED":
+            lthe['R'][i]=1
+            lthe['F'][i]=0
+            lthe['L'][i]=0
+        if lt[i] == "DRY LTL":
+            lthe['R'][i]=0
+            lthe['F'][i]=0
+            lthe['L'][i]=1
+        if lt[i] == "FLATBED":
+            lthe['R'][i]=0
+            lthe['F'][i]=1
+            lthe['L'][i]=0
+    flthe = pd.DataFrame()
+    flthe['R'] = lthe['R']
+    flthe['F'] = lthe['F']
+    flthe['L'] = lthe['L']
+    return flthe
