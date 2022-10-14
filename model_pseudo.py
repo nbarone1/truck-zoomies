@@ -6,6 +6,9 @@
 # import statements, assuming we go with tensorflow
 # if possible get access to use tf/keras
 import pandas as pd
+import os
+
+PATH = os.getcwd()
 # import numpy
 
 # importing methods from support files
@@ -36,16 +39,30 @@ import data_prep as dprep
 # Data prep done in seperate file, idea is to keep this one clean, act as a main*
 # look ups will be done in seperate file from data_prep
 
-data = dprep.holiday_dataframe('2022-01-01','2022-10-07')
+test_data = pd.read_csv(PATH+'\date_lt_state_test.csv')
 
-data.to_csv('file_name.csv',index=False)
+# data = dprep.holiday_dataframe('2022-01-01','2023-01-01')
 
-loads = ['DRY VAN','REFRIGERATED','DRY LTL','FLATBED']
-loads = pd.DataFrame(loads, columns=['Load Type'])
+# data.to_csv('file_name.csv',index=False)
 
-load_specs = dprep.load_onehot(loads)
-loads['R'] = load_specs['R']
-loads['F'] = load_specs['F']
-loads['L'] = load_specs['L']
+# loads = pd.DataFrame(['DRY VAN','REFRIGERATED','DRY LTL','FLATBED'])
 
-loads.to_csv('file_name2.csv',index=False)
+# loads = dprep.load_onehot(loads)
+
+# loads.to_csv('file_name2.csv',index=False)
+
+# states = pd.read_csv ('state_test.csv')
+# one_o_st = dprep.state_onehot(states['Origin State'])
+# one_d_st = dprep.state_onehot(states['Destination State'])
+# one_states = pd.concat([one_o_st,one_d_st],axis=1)
+# one_states.to_csv('file_name5.csv',index=False)
+
+dtest = dprep.holiday_dataframe(test_data['%Calendar Date'])
+
+ltest = dprep.load_onehot(test_data['Load Type'])
+
+stest = pd.concat([dprep.state_onehot(test_data['Origin State']),dprep.state_onehot(test_data['Destination State'])],axis=1)
+
+test_result = pd.concat([dtest,ltest,stest],axis=1)
+
+test_result.to_csv('test_results.csv',index=False)
