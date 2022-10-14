@@ -39,7 +39,10 @@ import data_prep as dprep
 # Data prep done in seperate file, idea is to keep this one clean, act as a main*
 # look ups will be done in seperate file from data_prep
 
-test_data = pd.read_csv(PATH+'\date_lt_state_test.csv')
+test_data = pd.read_csv(PATH+'\\test_data.csv')
+test_data['ALX_MILES'] = test_data['ALX_MILES'].astype(int)
+test_data['DAT.MOVES'] = test_data['DAT.MOVES'].astype(int)
+test_data['DAT.CONTRIBUTOR_COUNT'] = test_data['DAT.CONTRIBUTOR_COUNT'].astype(int)
 
 # data = dprep.holiday_dataframe('2022-01-01','2023-01-01')
 
@@ -61,8 +64,8 @@ dtest = dprep.holiday_dataframe(test_data['%Calendar Date'])
 
 ltest = dprep.load_onehot(test_data['Load Type'])
 
-stest = pd.concat([dprep.state_onehot(test_data['Origin State']),dprep.state_onehot(test_data['Destination State'])],axis=1)
+stest = pd.concat([dprep.state_onehot(test_data['ORIG']),dprep.state_onehot(test_data['DEST'])],axis=1)
 
-test_result = pd.concat([dtest,ltest,stest],axis=1)
+test_result = pd.concat([dtest,ltest,stest,test_data['ALX_MILES'],test_data['DAT_EST_RATE'],test_data['DAT.MOVES'],test_data['DAT.CONTRIBUTOR_COUNT'],test_data['AVG COST']],axis=1)
 
 test_result.to_csv('test_results.csv',index=False)
