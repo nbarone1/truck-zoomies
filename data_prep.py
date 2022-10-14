@@ -23,15 +23,15 @@ def holiday_dataframe(dr):
     # PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  
     # Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
     for i in range(0,107):
-        df[str(i)+" before"] = df['Date'].isin(hds-pd.DateOffset(i))
-        df[str(i)+" after"] = df['Date'].isin(hds+pd.DateOffset(i))
+        df.loc[str(i)+" before"] = df['Date'].isin(hds-pd.DateOffset(i))
+        df.loc[str(i)+" after"] = df['Date'].isin(hds+pd.DateOffset(i))
         for d in range(0,len(df['Date'])):
-            if df['Days Before'][d] == "":
+            if df.iloc[(1,d)] == "":
                 if df[str(i)+" before"][d] == True:
-                   df['Days Before'][d] = i
-            if df['Days After'][d] == "":
+                   df.iloc[(1,d)] = i
+            if df.iloc[(2,d)] == "":
                 if df[str(i)+" after"][d] == True:
-                   df['Days After'][d] = i
+                   df.iloc[(2,d)] = i
 
     
     fdf['Days Before'] = df['Days Before']
