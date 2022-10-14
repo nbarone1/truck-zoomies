@@ -28,14 +28,14 @@ import data_prep as dprep
 #       Otherwise we need fuel/miles for load length (keep even if we are doing it this way?)
 #       Build model lane by lane? can save parameters in a JSON file for future use/development/fine tuned
 
-# onehot encode load*, would have to onehot lanes (would likely have to do O_STATE, D_STATE)
+# onehot encode load*, would have to onehot lanes (would likely have to do O_STATE, D_STATE)*
 # holidays are days after and days before*
 # numericals - miles, cost, dat, dat frequency, line cost, historical fuel, temp, precipitation, labor, maitenance
 
 # Build some form of Recurrent Nueral Network
 # Look to if encoding is necessary -> yes
 
-# Data prep - ensure we have either names or numbers (do we need to turn O_STATE,D_STATE into a number)
+# Data prep - ensure we have either names or numbers (do we need to turn O_STATE,D_STATE into a number)*
 # Data prep done in seperate file, idea is to keep this one clean, act as a main*
 # look ups will be done in seperate file from data_prep
 
