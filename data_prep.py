@@ -15,7 +15,7 @@ def holiday_dataframe(dr):
 
     # get calendar for holidays in question
     cal = calendar()
-    hds = cal.holidays(start = '2020-01-01', end = '2022-12-31')
+    hds = cal.holidays(start = '2020-01-01', end = '2023-01-01')
     
     # add column with dates 
     # optimize using loc
