@@ -3,6 +3,7 @@
 # First Step, Holiday Spacing
 import pandas as pd
 from pandas.tseries.holiday import USFederalHolidayCalendar as calendar
+from sklearn.preprocessing import OneHotEncoder
 
 from numpy import NaN
 
@@ -38,10 +39,6 @@ def holiday_dataframe(s,f):
 
     return fdf
 
-# weather information (temp and precipitation)
-def weather():
-    return
-
 def load_onehot(lt):
     # load types 0,0,0 is dry; 1,0,0 is refer and 0,1,0 is flat bed; 0,0,1 is Dry LTL
     lthe = lt
@@ -70,3 +67,7 @@ def load_onehot(lt):
     flthe['F'] = lthe['F']
     flthe['L'] = lthe['L']
     return flthe
+
+def state_onehot(st):
+    st_one_list = pd.get_dummies(st)
+    return st_one_list
