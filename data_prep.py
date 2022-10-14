@@ -18,6 +18,10 @@ def holiday_dataframe(dr):
     hds = cal.holidays(start = '2020-01-01', end = '2022-12-31')
     
     # add column with dates 
+    # optimize using loc
+    # look at frame.insert versus a copy to improve performance
+    # PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  
+    # Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
     for i in range(0,107):
         df[str(i)+" before"] = df['Date'].isin(hds-pd.DateOffset(i))
         df[str(i)+" after"] = df['Date'].isin(hds+pd.DateOffset(i))
