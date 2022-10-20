@@ -23,8 +23,8 @@ import data_prep as dprep
 # labor - ??? statista offers a data set adjacent thing: Is this something I can get from non data set?
 # maitenance statistics - ??? take 16% of variable roughly: non data set information?
 # historical fuel - Collect API (get data by state and city) & EIA API
-# Does shipper matter?
-# Do we want this lande by lane?
+# Does shipper matter? not an important part (plus makes unusable model)
+# Do we want this lande by lane? lane by lane can be done, mark endpoints one hot encoded
 #       Otherwise we need fuel/miles for load length (keep even if we are doing it this way?)
 #       Build model lane by lane? can save parameters in a JSON file for future use/development/fine tuned
 
