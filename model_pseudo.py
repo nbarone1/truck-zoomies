@@ -19,11 +19,15 @@ import data_prep as dprep
 # Params right now: historical cost, historical fuel, temp, precipitation, market, seasonality (holiday, harvest season), DAT frequency, maitenance proxy, load type (hot encoded)* 
 # Cost, Market, (DAT), load type - ALX/ALC data
 # DAT frequency, line cost, fuel cost - DAT database
-# temp, precipitation - openweathermap - testing with open metro beginning. looking into downloading data sets instead of using an API
+# temp, precipitation - openweathermap - testing with open metro beginning. looking into downloading data sets instead of using an API - visual crossing may still be useful
 # seasonality - build calendar*
 # labor - ??? statista offers a data set adjacent thing: Is this something I can get from non data set?
 # maitenance statistics - ??? take 16% of variable roughly: non data set information?
 # historical fuel - EIA API and investigating another one (BarChart - waiting for response to inquiry), 
+
+# is statista a realistic option
+# other free avenues
+# do we download bulk data and update manually when we train a model
 
 # holidays are days after and days before*
 # numericals - miles, cost, dat, dat frequency, line cost, historical fuel, temp, precipitation, labor, maitenance
