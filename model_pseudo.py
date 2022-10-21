@@ -19,22 +19,16 @@ import data_prep as dprep
 # Params right now: historical cost, historical fuel, temp, precipitation, market, seasonality (holiday, harvest season), DAT frequency, maitenance proxy, load type (hot encoded)* 
 # Cost, Market, (DAT), load type - ALX/ALC data
 # DAT frequency, line cost, fuel cost - DAT database
-# temp, precipitation - openweathermap - testing with open metro beginning
+# temp, precipitation - openweathermap - testing with open metro beginning. looking into downloading data sets instead of using an API
 # seasonality - build calendar*
 # labor - ??? statista offers a data set adjacent thing: Is this something I can get from non data set?
 # maitenance statistics - ??? take 16% of variable roughly: non data set information?
 # historical fuel - EIA API and investigating another one (BarChart - waiting for response to inquiry), 
-# Does shipper matter? not an important part (plus makes unusable model)
-# Do we want this lande by lane? lane by lane can be done, mark endpoints one hot encoded
-#       Otherwise we need fuel/miles for load length (keep even if we are doing it this way?)
-#       Build model lane by lane? can save parameters in a JSON file for future use/development/fine tuned
 
-# onehot encode load*, would have to onehot lanes (would likely have to do O_STATE, D_STATE)*
 # holidays are days after and days before*
 # numericals - miles, cost, dat, dat frequency, line cost, historical fuel, temp, precipitation, labor, maitenance
 
 # Build some form of Recurrent Nueral Network
-# Look to if encoding is necessary -> yes
 
 # Data prep - ensure we have either names or numbers (do we need to turn O_STATE,D_STATE into a number)*
 # Data prep done in seperate file, idea is to keep this one clean, act as a main*
