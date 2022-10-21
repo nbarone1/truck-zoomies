@@ -15,14 +15,15 @@ PATH = os.getcwd()
 import data_prep as dprep
 
 # * are done
+# most APIs have limits, may need to purchase some data connections
 # Params right now: historical cost, historical fuel, temp, precipitation, market, seasonality (holiday, harvest season), DAT frequency, maitenance proxy, load type (hot encoded)* 
 # Cost, Market, (DAT), load type - ALX/ALC data
 # DAT frequency, line cost, fuel cost - DAT database
-# temp, precipitation - visual crossing weather
+# temp, precipitation - openweathermap - testing with open metro beginning
 # seasonality - build calendar*
 # labor - ??? statista offers a data set adjacent thing: Is this something I can get from non data set?
 # maitenance statistics - ??? take 16% of variable roughly: non data set information?
-# historical fuel - Collect API (get data by state and city) & EIA API
+# historical fuel - EIA API and investigating another one (BarChart - waiting for response to inquiry), 
 # Does shipper matter? not an important part (plus makes unusable model)
 # Do we want this lande by lane? lane by lane can be done, mark endpoints one hot encoded
 #       Otherwise we need fuel/miles for load length (keep even if we are doing it this way?)
