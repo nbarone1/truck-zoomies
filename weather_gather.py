@@ -11,8 +11,8 @@ import sys
 import urllib.error
 import urllib.request
 
-BaseUrl = ''
+BaseUrlW = ''
 
-API_KEY = ''
+API_KEYW = ''
 
 
