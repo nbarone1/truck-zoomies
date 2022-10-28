@@ -74,4 +74,5 @@ def wg(zips,country,dates):
     for i in range(0,len(zips)):
         data = weather_gather(str(zips[i]),country,dates[i])
         wg = pd.concat([wg,data])
+        print(i)
     return wg

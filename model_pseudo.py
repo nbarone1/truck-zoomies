@@ -20,7 +20,7 @@ test_data = pd.read_csv(PATH+'\zipcode_test.csv')
 ltest = dprep.data_onehot(test_data['Load Type'])
 
 # One-hot encoding the zip codes.
-oztest = dprep.data_onehott(test_data['ORIG'])
+oztest = dprep.data_onehot(test_data['ORIG'])
 dztest = dprep.data_onehot(test_data['DEST'])
 
 # This is the weather gathering function. It takes the zip code, country, and date and returns the
