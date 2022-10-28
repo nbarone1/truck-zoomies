@@ -39,25 +39,26 @@ import weather_gather as wg
 # Data prep done in seperate file, idea is to keep this one clean, act as a main*
 # look ups will be done in seperate file from data_prep
 
-test_data = pd.read_csv(PATH+'\\test_data.csv')
+test_data = pd.read_csv(PATH+'\zipcode_test.csv')
 # test_data['ALX_MILES'] = test_data['ALX_MILES'].astype(int)
 # test_data['DAT.MOVES'] = test_data['DAT.MOVES'].astype(int)
 # test_data['DAT.CONTRIBUTOR_COUNT'] = test_data['DAT.CONTRIBUTOR_COUNT'].astype(int)
 
-dtest = dprep.holiday_dataframe(test_data['%Calendar Date'])
+# dtest = dprep.holiday_dataframe(test_data['%Calendar Date'])
 
 ltest = dprep.load_onehot(test_data['Load Type'])
 
 oztest = dprep.place_onehot(test_data['ORIG'])
 dztest = dprep.place_onehot(test_data['DEST'])
 
-owtest = wg.weather_gather(test_data['ORIG'])
+owtest = wg.wg(test_data['ORIG'],"us",test_data['%Calendar Date'])
 owtest = pd.concat([owtest['tavg'],owtest['tmin'],owtest['tmax'],owtest['prcp'],owtest['snow']])
+print("yes")
 
-dwtest = wg.weather_gather(test_data['DEST'])
+dwtest = wg.wg(test_data['DEST'],"us",test_data['%Calendar Date'])
 dwtest = pd.concat([dwtest['tavg'],dwtest['tmin'],dwtest['tmax'],dwtest['prcp'],dwtest['snow']])
+print("yes")
 
-
-test_result = pd.concat([dtest,ltest,owtest,dwtest,oztest,dztest])
+test_result = pd.concat([ltest,owtest,dwtest,oztest,dztest])
 
 test_result.to_csv('zip_test_results.csv',index=False)

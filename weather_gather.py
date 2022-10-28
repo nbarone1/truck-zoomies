@@ -47,6 +47,8 @@ def latlon(zip,country):
     :return: A tuple of latitude and longitude
     """
     nomi = pgeocode.Nominatim(country)
+    if len(zip)<5:
+        zip = '0'+str(zip)
     locdata = nomi.query_postal_code(zip)
     lat,lon = locdata['latitude'],locdata['longitude']
     return lat,lon
@@ -86,11 +88,28 @@ def weather_gather(zip,country,date):
     data['snow']=data['snow']/25.4
     return data
 
+def wg(zips,country,dates):
+    """
+    This function takes in a list of zip codes, a country, and a list of dates, and returns a dataframe
+    of weather data for each zip code
+    
+    :param zips: list of zip codes
+    :param country: 'US' or 'CA'
+    :param dates: a list of dates in the format of 'YYYY-MM-DD'
+    :return: A dataframe with the weather data for each zip code.
+    """
+    wg = pd.DataFrame(columns=['time','tavg','tmin','tmax','prcp','snow','wdir','wspd','wpgt','pres','tsun'])
+    for i in range(0,len(zips)):
+        data = weather_gather(str(zips[i]),country,dates[i])
+        wg = pd.concat([wg,data])
+    return wg
 
 # A test to see if the weather_gather function works.
-# zip = 60640
+# zip = [60640,60630]
 # country = 'US'
-# date = "01/01/2022"
+# date = ["01/01/2022","01/01/2022"]
 # data = weather_gather(zip,country,date)
+# wg(zip,country,date)
+# ds = data.shape
 
-# print(data)
+# # print(ds)
