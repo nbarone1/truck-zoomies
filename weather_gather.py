@@ -7,6 +7,7 @@ import sys
 import matplotlib.pyplot as plt
 from meteostat import Stations, Daily
 from datetime import datetime
+import pgeocode
 
 
 # Idea is to use Visual Crossing
@@ -19,19 +20,23 @@ from datetime import datetime
 
 # API_KEYW = ''
 
-start = datetime(2022,1,1)
-end = datetime(2022,10,27)
+# start = datetime(2022,1,1)
+# end = datetime(2022,10,27)
 
-data = Daily('10637',start,end)
-data =data.fetch()
+# data = Daily('10637',start,end)
+# data =data.fetch()
 
-data['tavg']=(data['tavg']*9/5)+32
-data['prcp']=data['prcp']/25.4
+# data['tavg']=(data['tavg']*9/5)+32
+# data['prcp']=data['prcp']/25.4
 
-fig,ax1 = plt.subplots()
+# fig,ax1 = plt.subplot()
 
-ax2 = ax1.twinx()
-ax1.plot(data['tavg'])
-ax2.plot(data['prcp'],'g-')
+# ax2 = ax1.twinx()
+# ax1.plot(data['tavg'])
+# ax2.plot(data['prcp'])
 
-plt.show()
+# plt.show()
+
+def weather_gather(Org,Dst):
+    
+    return Org,Dst

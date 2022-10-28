@@ -43,6 +43,6 @@ def load_onehot(lt):
     flthe = pd.get_dummies(lt)
     return flthe
 
-def state_onehot(st):
-    st_one_list = pd.get_dummies(st)
-    return st_one_list
+def place_onehot(place):
+    place_one_list = pd.get_dummies(place)
+    return place_one_list
