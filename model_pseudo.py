@@ -1,64 +1,39 @@
 # MODEL OUTLINE/PSUEDO CODE
 
-# idea for model - time series with LSTM for certain parameters
-# LSTM for price, labor, fuel
-
-# import statements, assuming we go with tensorflow
-# if possible get access to use tf/keras
+# import statements, assuming we go with tensorflow and keras moving forward
 import pandas as pd
 import os
 
+# Set Path
 PATH = os.getcwd()
-# import numpy
 
 # importing methods from support files
 import data_prep as dprep
 import weather_gather as wg
 
-# * are done
-# most APIs have limits, may need to purchase some data connections
-# Params right now: historical cost, historical fuel, temp, precipitation, market, seasonality (holiday, harvest season), DAT frequency, maitenance proxy, load type (hot encoded)* 
-# Cost, Market, (DAT), load type - ALX/ALC data
-# DAT frequency, line cost, fuel cost - DAT database
-# temp, precipitation - openweathermap - testing with open metro beginning. looking into downloading data sets instead of using an API - visual crossing may still be useful
-# seasonality - build calendar*
-# labor - ??? statista offers a data set adjacent thing: Is this something I can get from non data set?
-# maitenance statistics - ??? take 16% of variable roughly: non data set information?
-# historical fuel - EIA API and investigating another one (BarChart - waiting for response to inquiry), 
-
-# is statista a realistic option
-# other free avenues
-# do we download bulk data and update manually when we train a model
-
-# holidays are days after and days before*
-# numericals - miles, cost, dat, dat frequency, line cost, historical fuel, temp, precipitation, labor, maitenance
-
-# Build some form of Recurrent Nueral Network
-
-# Data prep - ensure we have either names or numbers (do we need to turn O_STATE,D_STATE into a number)*
-# Data prep done in seperate file, idea is to keep this one clean, act as a main*
-# look ups will be done in seperate file from data_prep
 
 test_data = pd.read_csv(PATH+'\zipcode_test.csv')
-# test_data['ALX_MILES'] = test_data['ALX_MILES'].astype(int)
-# test_data['DAT.MOVES'] = test_data['DAT.MOVES'].astype(int)
-# test_data['DAT.CONTRIBUTOR_COUNT'] = test_data['DAT.CONTRIBUTOR_COUNT'].astype(int)
 
 # dtest = dprep.holiday_dataframe(test_data['%Calendar Date'])
 
-ltest = dprep.load_onehot(test_data['Load Type'])
+# One-hot encoding the load type column.
+ltest = dprep.data_onehot(test_data['Load Type'])
 
-oztest = dprep.place_onehot(test_data['ORIG'])
-dztest = dprep.place_onehot(test_data['DEST'])
+# One-hot encoding the zip codes.
+oztest = dprep.data_onehott(test_data['ORIG'])
+dztest = dprep.data_onehot(test_data['DEST'])
 
+# This is the weather gathering function. It takes the zip code, country, and date and returns the
+# weather data for that zip code on that date.
 owtest = wg.wg(test_data['ORIG'],"us",test_data['%Calendar Date'])
 owtest = pd.concat([owtest['tavg'],owtest['tmin'],owtest['tmax'],owtest['prcp'],owtest['snow']])
 print("yes")
-
 dwtest = wg.wg(test_data['DEST'],"us",test_data['%Calendar Date'])
 dwtest = pd.concat([dwtest['tavg'],dwtest['tmin'],dwtest['tmax'],dwtest['prcp'],dwtest['snow']])
 print("yes")
 
+# Concatenating the dataframes into one dataframe for export.
 test_result = pd.concat([ltest,owtest,dwtest,oztest,dztest])
 
+# Saving the dataframe to a csv file.
 test_result.to_csv('zip_test_results.csv',index=False)

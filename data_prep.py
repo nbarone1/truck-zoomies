@@ -1,10 +1,18 @@
 # Data Preparation
 
-# First Step, Holiday Spacing
+# Import packages for function
 import pandas as pd
-from pandas.tseries.holiday import USFederalHolidayCalendar as calendar
 
+# First function is holiday/seasonality
+from pandas.tseries.holiday import USFederalHolidayCalendar as calendar
 def holiday_dataframe(dr):
+    """
+    It takes a date range and returns a dataframe with the dates in the range and the number of days
+    before and after each date that a holiday falls
+    
+    :param dr: date range
+    :return: A dataframe with the dates in the range and the number of days before and after a holiday.
+    """
     # s and f need to be dates writen as strings in form yyyy-mm-dd
     df = pd.DataFrame()
     df['Date'] = pd.to_datetime(dr)
@@ -39,10 +47,14 @@ def holiday_dataframe(dr):
 
     return fdf
 
-def load_onehot(lt):
-    flthe = pd.get_dummies(lt)
-    return flthe
 
-def place_onehot(place):
-    place_one_list = pd.get_dummies(place)
-    return place_one_list
+# Second function is one hot encoding
+def data_onehot(list):
+    """
+    It takes a list of categorical values and returns a one-hot encoded dataframe
+    
+    :param list: the list of data you want to one-hot encode
+    :return: A dataframe with the one-hot encoded values.
+    """
+    ohe = pd.get_dummies(list)
+    return ohe

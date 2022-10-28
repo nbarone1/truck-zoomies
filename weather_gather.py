@@ -1,42 +1,12 @@
-# API pulling
+# Weather Gathering
 # Done seperately from data preperation for Readability
 
+# Importing the libraries that are needed for the functions to work.
 import pandas as pd
-import numpy as np
-import sys
-import matplotlib.pyplot as plt
-from meteostat import Stations, Daily,Point
-from datetime import datetime
+from meteostat import Daily,Point
 import pgeocode
 
-
-# Idea is to use Visual Crossing
-# decision on weather API determines following imports, API Keys, etc
-
-# import urllib.error
-# import urllib.request
-
-# BaseUrlW = ''
-
-# API_KEYW = ''
-
-# start = datetime(2022,1,1)
-# end = datetime(2022,10,27)
-
-# data = Daily('10637',start,end)
-# data =data.fetch()
-
-# data['tavg']=(data['tavg']*9/5)+32
-# data['prcp']=data['prcp']/25.4
-
-# fig,ax1 = plt.subplot()
-
-# ax2 = ax1.twinx()
-# ax1.plot(data['tavg'])
-# ax2.plot(data['prcp'])
-
-# plt.show()
-
+# First function is finding latitude and longitude
 def latlon(zip,country):
     """
     It takes a zip code and a country code as input, and returns the latitude and longitude of the zip
@@ -53,6 +23,7 @@ def latlon(zip,country):
     lat,lon = locdata['latitude'],locdata['longitude']
     return lat,lon
 
+# Second function is to get weather data
 def weather_gather(zip,country,date):
     """
     This function takes a zip code, country, and date as inputs and returns the weather data for that
@@ -88,6 +59,7 @@ def weather_gather(zip,country,date):
     data['snow']=data['snow']/25.4
     return data
 
+# Third function is to handle weather data for all records
 def wg(zips,country,dates):
     """
     This function takes in a list of zip codes, a country, and a list of dates, and returns a dataframe
@@ -103,13 +75,3 @@ def wg(zips,country,dates):
         data = weather_gather(str(zips[i]),country,dates[i])
         wg = pd.concat([wg,data])
     return wg
-
-# A test to see if the weather_gather function works.
-# zip = [60640,60630]
-# country = 'US'
-# date = ["01/01/2022","01/01/2022"]
-# data = weather_gather(zip,country,date)
-# wg(zip,country,date)
-# ds = data.shape
-
-# # print(ds)
