@@ -13,6 +13,7 @@ PATH = os.getcwd()
 
 # importing methods from support files
 import data_prep as dprep
+import weather_gather as wg
 
 # * are done
 # most APIs have limits, may need to purchase some data connections
@@ -39,32 +40,24 @@ import data_prep as dprep
 # look ups will be done in seperate file from data_prep
 
 test_data = pd.read_csv(PATH+'\\test_data.csv')
-test_data['ALX_MILES'] = test_data['ALX_MILES'].astype(int)
-test_data['DAT.MOVES'] = test_data['DAT.MOVES'].astype(int)
-test_data['DAT.CONTRIBUTOR_COUNT'] = test_data['DAT.CONTRIBUTOR_COUNT'].astype(int)
-
-# data = dprep.holiday_dataframe('2022-01-01','2023-01-01')
-
-# data.to_csv('file_name.csv',index=False)
-
-# loads = pd.DataFrame(['DRY VAN','REFRIGERATED','DRY LTL','FLATBED'])
-
-# loads = dprep.load_onehot(loads)
-
-# loads.to_csv('file_name2.csv',index=False)
-
-# states = pd.read_csv ('state_test.csv')
-# one_o_st = dprep.state_onehot(states['Origin State'])
-# one_d_st = dprep.state_onehot(states['Destination State'])
-# one_states = pd.concat([one_o_st,one_d_st],axis=1)
-# one_states.to_csv('file_name5.csv',index=False)
+# test_data['ALX_MILES'] = test_data['ALX_MILES'].astype(int)
+# test_data['DAT.MOVES'] = test_data['DAT.MOVES'].astype(int)
+# test_data['DAT.CONTRIBUTOR_COUNT'] = test_data['DAT.CONTRIBUTOR_COUNT'].astype(int)
 
 dtest = dprep.holiday_dataframe(test_data['%Calendar Date'])
 
 ltest = dprep.load_onehot(test_data['Load Type'])
 
-stest = pd.concat([dprep.state_onehot(test_data['ORIG']),dprep.state_onehot(test_data['DEST'])],axis=1)
+oztest = dprep.place_onehot(test_data['ORIG'])
+dztest = dprep.place_onehot(test_data['DEST'])
 
-test_result = pd.concat([dtest,ltest,stest,test_data['ALX_MILES'],test_data['DAT_EST_RATE'],test_data['DAT.MOVES'],test_data['DAT.CONTRIBUTOR_COUNT'],test_data['AVG COST']],axis=1)
+owtest = wg.weather_gather(test_data['ORIG'])
+owtest = pd.concat([owtest['tavg'],owtest['tmin'],owtest['tmax'],owtest['prcp'],owtest['snow']])
 
-test_result.to_csv('test_results.csv',index=False)
+dwtest = wg.weather_gather(test_data['DEST'])
+dwtest = pd.concat([dwtest['tavg'],dwtest['tmin'],dwtest['tmax'],dwtest['prcp'],dwtest['snow']])
+
+
+test_result = pd.concat([dtest,ltest,owtest,dwtest,oztest,dztest])
+
+test_result.to_csv('zip_test_results.csv',index=False)
