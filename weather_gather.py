@@ -73,6 +73,6 @@ def wg(zips,country,dates):
     wg = pd.DataFrame(columns=['time','tavg','tmin','tmax','prcp','snow','wdir','wspd','wpgt','pres','tsun'])
     for i in range(0,len(zips)):
         data = weather_gather(str(zips[i]),country,dates[i])
-        # wg = pd.concat([wg,data])
+        wg = pd.concat([wg,data])
         print(i)
     return wg
