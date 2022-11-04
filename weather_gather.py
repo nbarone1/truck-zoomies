@@ -51,12 +51,6 @@ def weather_gather(zip,country,date):
     point = Point(lat,lon)
     data = Daily(point,date,date)
     data = data.fetch()
-    # Converting the temperatures from Celsius to Fahrenheit and the precipitation + snow from millimeters to inches.
-    data['tavg']=(data['tavg']*9/5)+32
-    data['tmin']=(data['tmin']*9/5)+32
-    data['tmax']=(data['tmax']*9/5)+32
-    data['prcp']=data['prcp']/25.4
-    data['snow']=data['snow']/25.4
     return data
 
 # Third function is to handle weather data for all records
@@ -75,4 +69,10 @@ def wg(zips,country,dates):
         data = weather_gather(str(zips[i]),country,dates[i])
         wg = pd.concat([wg,data])
         print(i)
+        # Converting the temperatures from Celsius to Fahrenheit and the precipitation + snow from millimeters to inches.
+    wg['tavg']=(wg['tavg']*9/5)+32
+    wg['tmin']=(wg['tmin']*9/5)+32
+    wg['tmax']=(wg['tmax']*9/5)+32
+    wg['prcp']=wg['prcp']/25.4
+    wg['snow']=wg['snow']/25.4
     return wg
