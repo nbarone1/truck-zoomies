@@ -68,7 +68,7 @@ def wg(zips,country,dates):
     for i in range(0,len(zips)):
         data = weather_gather(str(zips[i]),country,dates[i])
         wg = pd.concat([wg,data])
-        print(i)
+        print(len(zips)-i)
         # Converting the temperatures from Celsius to Fahrenheit and the precipitation + snow from millimeters to inches.
     wg['tavg']=(wg['tavg']*9/5)+32
     wg['tmin']=(wg['tmin']*9/5)+32
