@@ -3,6 +3,14 @@
 # Import packages for function
 import pandas as pd
 
+def zip_set(list):
+    for i in range(0,len(list)):
+        zip = list[i]
+        if len(zip)<5:
+            zip = '0'+str(zip)
+            list[i] = zip
+    return list
+
 # First function is holiday/seasonality
 from pandas.tseries.holiday import USFederalHolidayCalendar as calendar
 def holiday_dataframe(dr):

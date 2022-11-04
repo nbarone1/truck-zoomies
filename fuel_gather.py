@@ -4,6 +4,7 @@
 # The above code is importing the necessary libraries for the code to run.
 import pandas as pd
 import requests
+from uszipcode import SearchEngine
 import matplotlib.pyplot as plt
 import numpy as np
 from datetime import date
@@ -47,4 +48,35 @@ def get_fuel():
     print(f)
     return
 
+def get_key(my_dict,val):
+    """
+    It takes a dictionary and a value, and returns the key that corresponds to that value
+    
+    :param my_dict: the dictionary you want to search
+    :param val: the value you're looking for
+    :return: The key of the dictionary
+    """
+    for key, value in my_dict.items():
+        if val == value:
+            return key
+
 get_fuel()
+
+lists = [74135,60660,60640,20002]
+
+def assign_duoarea(lists):
+    engine = SearchEngine()
+    duoareas = {'R10X':['CT','ME','MA','NH','RI','VT'], 
+            'R10Y':['DE','DC','MD','NJ','NY','PA'],
+            'R10Z':['FL','GA','NC','SC','VA','WV'],
+            'R20' :['IL','IN','IA','KS','KY','MI','MN','MO','NR','ND','OH','OK','SD','TN','WI'],
+            'R30' :['AL','AR','LA','MS','NM','TX'],
+            'R40' :['CO','ID','MT','UT','WY'],
+            'R5XCA' :['AK','AZ','HA','NV','OR','WA'],
+            'SCA':['CA']}
+    for i in range(0,len(lists)):
+        st = engine.by_zipcode(lists[i])
+        kpos = [k for k,v in duoareas.items() if st.state_abbr in v]
+        print(kpos[0])
+        
+assign_duoarea(lists)

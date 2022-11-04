@@ -17,8 +17,6 @@ def latlon(zip,country):
     :return: A tuple of latitude and longitude
     """
     nomi = pgeocode.Nominatim(country)
-    if len(zip)<5:
-        zip = '0'+str(zip)
     locdata = nomi.query_postal_code(zip)
     lat,lon = locdata['latitude'],locdata['longitude']
     return lat,lon

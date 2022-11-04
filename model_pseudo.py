@@ -14,6 +14,9 @@ import weather_gather as wg
 
 test_data = pd.read_csv(PATH+'\zipcode_test.csv')
 
+test_data['ORIG'] = dprep.zip_set(test_data['ORIG'])
+test_data['DEST'] = dprep.zip_set(test_data['DEST'])
+
 # dtest = dprep.holiday_dataframe(test_data['%Calendar Date'])
 
 # One-hot encoding the load type column.
