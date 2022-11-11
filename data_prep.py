@@ -4,9 +4,9 @@
 import pandas as pd
 
 def zip_set(list):
-    for i in range(0,len(list)):
+    for i in list:
         zip = list[i]
-        if len(zip)<5:
+        if len(str(zip))<5:
             zip = '0'+str(zip)
             list[i] = zip
     return list
