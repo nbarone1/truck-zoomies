@@ -29,14 +29,14 @@ dztest = dprep.data_onehot(test_data['DEST'])
 # This is the weather gathering function. It takes the zip code, country, and date and returns the
 # weather data for that zip code on that date.
 owtest = wg.wg(test_data['ORIG'],"us",test_data['%Calendar Date'])
-owtest = pd.concat([owtest['tavg'],owtest['tmin'],owtest['tmax'],owtest['prcp'],owtest['snow']])
+owtest = pd.concat([owtest['tavg'],owtest['tmin'],owtest['tmax'],owtest['prcp'],owtest['snow']],1)
 print("yes")
 dwtest = wg.wg(test_data['DEST'],"us",test_data['%Calendar Date'])
-dwtest = pd.concat([dwtest['tavg'],dwtest['tmin'],dwtest['tmax'],dwtest['prcp'],dwtest['snow']])
+dwtest = pd.concat([dwtest['tavg'],dwtest['tmin'],dwtest['tmax'],dwtest['prcp'],dwtest['snow']],1)
 print("yes")
 
 # Concatenating the dataframes into one dataframe for export.
-test_result = pd.concat([ltest,owtest,dwtest,oztest,dztest])
+test_result = pd.concat([ltest,owtest,dwtest,oztest,dztest],1)
 
 # Saving the dataframe to a csv file.
 test_result.to_csv('zip_test_results.csv',index=False)

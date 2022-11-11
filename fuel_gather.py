@@ -5,14 +5,13 @@
 import pandas as pd
 import requests
 from uszipcode import SearchEngine
-import matplotlib.pyplot as plt
-import numpy as np
 from datetime import date
-import matplotlib.ticker as ticker
+# import os
+
 
 # This is the API key that is needed to access the data from the EIA website.
 API_KEY = '0JWYgxKIukehAgfhGxGGWgeoARIQhUCyU1JPRke9'
-url = 'https://api.eia.gov/v2/petroleum/pri/gnd/data/api_key='+API_KEY
+url = 'https://api.eia.gov/v2/petroleum/pri/gnd/data/api_key='+API_KEY+"&facets[product][]=EPD2D"
 print(url)
 
 # A dictionary that is used to pass parameters to the API.
@@ -24,10 +23,20 @@ header = {
             "facets": {
                 "product": [
                     "EPD2D"
+                ],
+                "duoarea": [
+                    "R1X",
+                    "R1Y",
+                    "R1Z",
+                    "R20",
+                    "R30",
+                    "R40",
+                    "R5XCA",
+                    "SCA"
                 ]
             },
             "start": "2021-01-01",
-            "end": None,
+            "end": "null",
             "sort": [
                 {
                     "column": "period",
@@ -40,11 +49,11 @@ header = {
             ],
             "offset": 0,
             "length": 5000,
-            "api-version": "2.0.3"
+            "api-version": "2.0.4"
         }
 
 def get_fuel():
-    f = requests.get(url,header)
+    f = requests.get(url)
     print(f)
     return
 
@@ -65,6 +74,11 @@ get_fuel()
 lists = [74135,60660,60640,20002]
 
 def assign_duoarea(lists):
+    """
+    It takes a list of zip codes and returns the corresponding duoarea
+    
+    :param lists: a list of zipcodes
+    """
     engine = SearchEngine()
     duoareas = {'R10X':['CT','ME','MA','NH','RI','VT'], 
             'R10Y':['DE','DC','MD','NJ','NY','PA'],
