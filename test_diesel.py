@@ -42,6 +42,8 @@ data = pd.concat([Date,DuoArea],1)
 
 print(diesel_data['Date'])
 
+print(diesel_data.iloc[50])
+
 def pricepull(data,reference):
     pricelist = pd.DataFrame()
     datelist = list(reference['Date'])
