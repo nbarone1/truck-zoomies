@@ -17,7 +17,7 @@ test_data = pd.read_csv(PATH+'\zipcode_test.csv')
 test_orig = dprep.zip_set(test_data['ORIG'])
 test_dest = dprep.zip_set(test_data['DEST'])
 
-# dtest = dprep.holiday_dataframe(test_data['%Calendar Date'])
+dtest = dprep.holiday_dataframe(test_data['%Calendar Date'])
 
 # One-hot encoding the load type column.
 ltest = dprep.data_onehot(test_data['Load Type'])
