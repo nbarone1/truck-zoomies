@@ -14,8 +14,8 @@ import weather_gather as wg
 
 test_data = pd.read_csv(PATH+'\zipcode_test.csv')
 
-test_data['ORIG'] = dprep.zip_set(test_data['ORIG'])
-test_data['DEST'] = dprep.zip_set(test_data['DEST'])
+test_orig = dprep.zip_set(test_data['ORIG'])
+test_dest = dprep.zip_set(test_data['DEST'])
 
 # dtest = dprep.holiday_dataframe(test_data['%Calendar Date'])
 
@@ -23,15 +23,15 @@ test_data['DEST'] = dprep.zip_set(test_data['DEST'])
 ltest = dprep.data_onehot(test_data['Load Type'])
 
 # One-hot encoding the zip codes.
-oztest = dprep.data_onehot(test_data['ORIG'])
-dztest = dprep.data_onehot(test_data['DEST'])
+oztest = dprep.data_onehot(test_orig)
+dztest = dprep.data_onehot(test_dest)
 
 # This is the weather gathering function. It takes the zip code, country, and date and returns the
 # weather data for that zip code on that date.
-owtest = wg.wg(test_data['ORIG'],"us",test_data['%Calendar Date'])
+owtest = wg.wg(test_orig,"us",test_data['%Calendar Date'])
 owtest = pd.concat([owtest['tavg'],owtest['tmin'],owtest['tmax'],owtest['prcp'],owtest['snow']],1)
 print("yes")
-dwtest = wg.wg(test_data['DEST'],"us",test_data['%Calendar Date'])
+dwtest = wg.wg(test_dest,"us",test_data['%Calendar Date'])
 dwtest = pd.concat([dwtest['tavg'],dwtest['tmin'],dwtest['tmax'],dwtest['prcp'],dwtest['snow']],1)
 print("yes")
 
