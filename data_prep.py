@@ -4,12 +4,13 @@
 import pandas as pd
 
 def zip_set(list):
-    for i in list:
+    ziplist = []
+    for i in range(0,len(list)):
         zip = list[i]
         if len(str(zip))<5:
             zip = '0'+str(zip)
-            list[i] = zip
-    return list
+        ziplist.append(zip)
+    return ziplist
 
 # First function is holiday/seasonality
 from pandas.tseries.holiday import USFederalHolidayCalendar as calendar
