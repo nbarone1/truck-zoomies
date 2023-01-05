@@ -6,15 +6,20 @@ import pandas as pd
 import os
 import time
 
-# Set Path
-PATH = os.getcwd()
+# Select Data File
+import tkinter as tk
+from tkinter import filedialog
+
+root = tk.Tk()
+
+file_path = filedialog.askopenfilename()
 
 # importing methods from support files
 import data_prep as dprep
 import weather_gather as wg
 
 st = time.process_time()
-test_data = pd.read_csv(PATH+'\zipcode_test.csv')
+test_data = pd.read_csv(file_path)
 et = time.process_time()
 t = et-st
 print("Read function time of ",t)
@@ -95,8 +100,4 @@ t = et-st
 print("Concat function time of ",t)
 
 # Saving the dataframe to a csv file.
-st = time.process_time()
-test_result.to_csv('zip_test_results.csv',index=False)
-et = time.process_time()
-t = et-st
-print("To CSV function time of ",t)
+save_path = filedialog.asksaveasfilename(defaultextension=".csv")

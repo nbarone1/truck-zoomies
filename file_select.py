@@ -7,3 +7,5 @@ from tkinter import filedialog
 root = tk.Tk()
 
 file_path = filedialog.askopenfilename()
+
+save_path = filedialog.asksaveasfilename(defaultextension=".csv")

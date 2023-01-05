@@ -49,6 +49,7 @@ def holiday_dataframe(dr):
             if df.iloc[(d,2)] == "":
                 if df[str(i)+" after"][d] == True:
                    df.iloc[(d,2)] = i
+        print(i)
 
     
     fdf['Days Before'] = df['Days Before']
