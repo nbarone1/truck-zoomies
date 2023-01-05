@@ -32,7 +32,7 @@ def holiday_dataframe(dr):
 
     # get calendar for holidays in question
     cal = calendar()
-    hds = cal.holidays(start = '2020-01-01', end = '2023-01-01')
+    hds = cal.holidays(start = '2020-01-01', end = '2024-01-01')
     
     # add column with dates 
     # optimize using loc
@@ -50,6 +50,13 @@ def holiday_dataframe(dr):
                 if df[str(i)+" after"][d] == True:
                    df.iloc[(d,2)] = i
         print(i)
+
+        # for i in range(0,107):
+            # for d in range(0,len(df['Date'])):
+                # if df['Date'][d].isin(hds-pd.DateOffset(i)):
+                    # df.iloc[(d,1)] = i
+                # if df['Date'][d].isin(hds+pd.DateOffset(i)):
+                    # df.iloc[(d,2)] = i
 
     
     fdf['Days Before'] = df['Days Before']
