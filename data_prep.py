@@ -4,6 +4,13 @@
 import pandas as pd
 
 def zip_set(list):
+    """
+    It takes a list of zip codes, and if the zip code is less than 5 digits, it adds a zero to the
+    beginning of the zip code
+    
+    :param list: a list of zip codes
+    :return: A list of zip codes with leading zeros.
+    """
     ziplist = []
     for i in range(0,len(list)):
         zip = list[i]
