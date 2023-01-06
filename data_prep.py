@@ -46,6 +46,8 @@ def holiday_dataframe(dr):
     # look at frame.insert versus a copy to improve performance
     # PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  
     # Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+    # FutureWarning: In a future version, `df.iloc[:, i] = newvals` will attempt to set the values inplace instead of always setting a new array. 
+    # To retain the old behavior, use either `df[df.columns[i]] = newvals` or, if columns are non-unique, `df.isetitem(i, newvals)
     for i in range(0,107):
         df[str(i)+" before"] = df['Date'].isin(hds-pd.DateOffset(i))
         df[str(i)+" after"] = df['Date'].isin(hds+pd.DateOffset(i))
