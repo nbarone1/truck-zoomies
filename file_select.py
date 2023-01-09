@@ -8,4 +8,6 @@ root = tk.Tk()
 
 file_path = filedialog.askopenfilename()
 
+save_path = [1]
+
 save_path = filedialog.asksaveasfilename(defaultextension=".csv")
