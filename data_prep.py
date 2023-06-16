@@ -51,13 +51,13 @@ def holiday_dataframe(dr):
     for i in range(0,107):
         df[str(i)+" before"] = df['Date'].isin(hds-pd.DateOffset(i))
         df[str(i)+" after"] = df['Date'].isin(hds+pd.DateOffset(i))
-        for d in range(0,len(df['Date'])):
-            if df.iloc[(d,1)] == "":
-                if df[str(i)+" before"][d] == True:
-                   df.iloc[(d,1)] = i
-            if df.iloc[(d,2)] == "":
-                if df[str(i)+" after"][d] == True:
-                   df.iloc[(d,2)] = i
+        # for d in range(0,len(df['Date'])):
+        #     if df.iloc[(d,1)] == "":
+        #         if df[str(i)+" before"][d] == True:
+        #            df.iloc[(d,1)] = i
+        #     if df.iloc[(d,2)] == "":
+        #         if df[str(i)+" after"][d] == True:
+        #            df.iloc[(d,2)] = i
         print(i)
 
         # for i in range(0,107):

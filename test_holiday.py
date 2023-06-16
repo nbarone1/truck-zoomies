@@ -14,10 +14,8 @@ holidays = cal.holidays(start='2022-12-28', end='2024-01-01')
 
 st = time.process_time()
 dtest = dprep.holiday_dataframe(df['Date'])
+print(dtest)
 et = time.process_time()
 t = et-st
 print("Holiday function time of ",t)
 
-
-
-print(df)
