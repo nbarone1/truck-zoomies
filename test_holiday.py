@@ -9,11 +9,11 @@ dr = pd.date_range(start='2023-01-01', end='2023-12-31')
 df = pd.DataFrame()
 df['Date'] = dr
 
-cal = calendar()
-holidays = cal.holidays(start='2022-12-28', end='2024-01-01')
+start= '2022-12-28'
+end='2024-01-01'
 
 st = time.process_time()
-dtest = dprep.holiday_dataframe(df['Date'])
+dtest = dprep.holiday_dataframe(df['Date'], start, end)
 print(dtest)
 et = time.process_time()
 t = et-st
