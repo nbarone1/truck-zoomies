@@ -1,7 +1,6 @@
 # test holiday methods
 
 import pandas as pd
-from pandas.tseries.holiday import USFederalHolidayCalendar as calendar
 import time
 import data_prep as dprep
 
