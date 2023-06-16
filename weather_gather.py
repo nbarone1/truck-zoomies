@@ -62,6 +62,8 @@ def wg(zips,country,dates):
     :param dates: a list of dates in the format of 'YYYY-MM-DD'
     :return: A dataframe with the weather data for each zip code.
     """
+    #FutureWarning: In a future version, `df.iloc[:, i] = newvals` will attempt to set the values inplace instead of always setting a new array. 
+    # To retain the old behavior, use either `df[df.columns[i]] = newvals` or, if columns are non-unique, `df.isetitem(i, newvals)`
     wg = pd.DataFrame(columns=['time','tavg','tmin','tmax','prcp','snow','wdir','wspd','wpgt','pres','tsun'])
     for i in range(0,len(zips)):
         data = weather_gather(str(zips[i]),country,dates[i])

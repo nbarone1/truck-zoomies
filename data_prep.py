@@ -4,12 +4,20 @@
 import pandas as pd
 
 def zip_set(list):
-    for i in list:
+    """
+    It takes a list of zip codes, and if the zip code is less than 5 digits, it adds a zero to the
+    beginning of the zip code
+    
+    :param list: a list of zip codes
+    :return: A list of zip codes with leading zeros.
+    """
+    ziplist = []
+    for i in range(0,len(list)):
         zip = list[i]
         if len(str(zip))<5:
             zip = '0'+str(zip)
-            list[i] = zip
-    return list
+        ziplist.append(zip)
+    return ziplist
 
 # First function is holiday/seasonality
 from pandas.tseries.holiday import USFederalHolidayCalendar as calendar
@@ -31,23 +39,33 @@ def holiday_dataframe(dr):
 
     # get calendar for holidays in question
     cal = calendar()
-    hds = cal.holidays(start = '2020-01-01', end = '2023-01-01')
+    hds = cal.holidays(start = '2020-01-01', end = '2024-01-01')
     
     # add column with dates 
     # optimize using loc
     # look at frame.insert versus a copy to improve performance
     # PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  
     # Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+    # FutureWarning: In a future version, `df.iloc[:, i] = newvals` will attempt to set the values inplace instead of always setting a new array. 
+    # To retain the old behavior, use either `df[df.columns[i]] = newvals` or, if columns are non-unique, `df.isetitem(i, newvals)
     for i in range(0,107):
-        df.loc[str(i)+" before"] = df['Date'].isin(hds-pd.DateOffset(i))
-        df.loc[str(i)+" after"] = df['Date'].isin(hds+pd.DateOffset(i))
+        df[str(i)+" before"] = df['Date'].isin(hds-pd.DateOffset(i))
+        df[str(i)+" after"] = df['Date'].isin(hds+pd.DateOffset(i))
         for d in range(0,len(df['Date'])):
-            if df.iloc[(1,d)] == "":
+            if df.iloc[(d,1)] == "":
                 if df[str(i)+" before"][d] == True:
-                   df.iloc[(1,d)] = i
-            if df.iloc[(2,d)] == "":
+                   df.iloc[(d,1)] = i
+            if df.iloc[(d,2)] == "":
                 if df[str(i)+" after"][d] == True:
-                   df.iloc[(2,d)] = i
+                   df.iloc[(d,2)] = i
+        print(i)
+
+        # for i in range(0,107):
+            # for d in range(0,len(df['Date'])):
+                # if df['Date'][d].isin(hds-pd.DateOffset(i)):
+                    # df.iloc[(d,1)] = i
+                # if df['Date'][d].isin(hds+pd.DateOffset(i)):
+                    # df.iloc[(d,2)] = i
 
     
     fdf['Days Before'] = df['Days Before']
