@@ -3,13 +3,15 @@
 import pandas as pd
 import time
 import data_prep as dprep
+import easygui
 
 dr = pd.date_range(start='2023-01-01', end='2023-12-31')
 df = pd.DataFrame()
 df['Date'] = dr
 
-start= '2022-12-28'
-end='2024-01-01'
+hol_start = easygui.enterbox("Start Date for Holiday?")
+start = easygui.enterbox("Start Date for Holiday?")
+end = easygui.enterbox("End Date for Holiday?")
 
 st = time.process_time()
 dtest = dprep.holiday_dataframe(df['Date'], start, end)
