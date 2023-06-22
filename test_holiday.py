@@ -9,7 +9,6 @@ dr = pd.date_range(start='2023-01-01', end='2023-12-31')
 df = pd.DataFrame()
 df['Date'] = dr
 
-hol_start = easygui.enterbox("Start Date for Holiday?")
 start = easygui.enterbox("Start Date for Holiday?")
 end = easygui.enterbox("End Date for Holiday?")
 

@@ -16,7 +16,13 @@ from tkinter import filedialog
 # This is a GUI to select a file.
 root = tk.Tk()
 
+#This is a GUI for user input
+import easygui
+
 file_path = filedialog.askopenfilename()
+
+hol_start = easygui.enterbox("Start Date for Holiday?")
+hol_end = easygui.enterbox("End Date for Holiday?")
 
 # importing methods from support files
 import data_prep as dprep
