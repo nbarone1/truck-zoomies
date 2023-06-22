@@ -47,7 +47,7 @@ t = et-st
 print("Zip function time of ",t)
 
 st = time.process_time()
-dtest = dprep.holiday_dataframe(test_data['%Calendar Date'])
+dtest = dprep.holiday_dataframe(test_data['%Calendar Date'],hol_start,hol_end)
 et = time.process_time()
 t = et-st
 print("Holiday function time of ",t)
