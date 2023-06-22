@@ -13,11 +13,11 @@ import time
 import tkinter as tk
 from tkinter import filedialog
 
-# This is a GUI to select a file.
-root = tk.Tk()
-
 #This is a GUI for user input
 import easygui
+
+# This is a GUI to select a file.
+root = tk.Tk()
 
 file_path = filedialog.askopenfilename()
 
