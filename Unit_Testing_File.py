@@ -37,7 +37,8 @@ class TestMethods(unittest.TestCase):
         # Test ensuring CSV is reading correctly
         imp_csv = filedialog.askopenfilename()
         test_data = pd.read_csv(imp_csv)
-        cor_data = pd.DataFrame
+        cor_entry = {'%Calendar Date':['03-15-2022'],'ORIG':['TX_FTW'],'DEST':['CA_ONT'],'Load Type':['DRY VAN'],'ALX_MILES':[1377],'DAT_EST_RATE':['$2123.50'],'DAT.MOVES':[59],'DAT.CONTRIBUTOR_COUNT':[21],'AVG COST':['$4800.00']}
+        cor_data = pd.DataFrame(cor_entry)
         self.assertEqual(cor_data,test_data)
 
 unittest.main()
