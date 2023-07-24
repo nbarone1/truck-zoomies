@@ -6,20 +6,50 @@
 # import statements
 # assume tensorflow and keras moving forward
 import pandas as pd
-import os
+import unittest
 import time
 
-# Select Data File
+# Select Data File Packages 
 import tkinter as tk
 from tkinter import filedialog
 
-#This is a GUI for user input
+# Import package for holiday GUI
 import easygui
 
-# This is a GUI to select a file.
-root = tk.Tk()
 
+
+# Creating Unit Test Class
+
+class TestMethods(unittest.TestCase):
+    def test_hol(self):
+        # Holiday Start/End Test
+        # GUI for holiday start/end dates
+
+        hol_start = easygui.enterbox("Start Date for Holiday?")
+        hol_end = easygui.enterbox("End Date for Holiday?")
+
+        hol_s_test = "01-01-2023"
+        hol_e_test = "12-31-2023"
+        self.assertEqual(hol_start,hol_s_test)
+        self.assertEqual(hol_end,hol_e_test)
+
+    def test_read(self):
+        # Test ensuring CSV is reading correctly
+        imp_csv = filedialog.askopenfilename()
+        test_data = pd.read_csv(imp_csv)
+        cor_data = pd.DataFrame
+        self.assertEqual(cor_data,test_data)
+
+unittest.main()
+
+#This Portion is for testing speed of process on small batches
+
+# This is a GUI to select a file.
+
+root = tk.Tk()
 file_path = filedialog.askopenfilename()
+
+# GUI for holiday start/end dates
 
 hol_start = easygui.enterbox("Start Date for Holiday?")
 hol_end = easygui.enterbox("End Date for Holiday?")

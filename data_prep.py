@@ -22,6 +22,8 @@ def zip_set(list):
 # First function is holiday/seasonality
 from pandas.tseries.holiday import USFederalHolidayCalendar as calendar
 def holiday_dataframe(dr,sd,ed):
+    # Take data set for each unique date and use hash table appraoch instead of checking for each element in the data set
+
     """
     It takes a date range and returns a dataframe with the dates in the range and the number of days
     before and after each date that a holiday falls
